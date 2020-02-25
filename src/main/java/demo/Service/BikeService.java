@@ -1,6 +1,6 @@
 package demo.Service;
 
-import demo.Models.Bike;
+import demo.Model.Bike;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,4 +16,6 @@ public interface BikeService {
     Bike getBikeById(Long id);
 
     void removeBikeById(Long id);
+
+    Bike updateBike(Bike bike);
 }

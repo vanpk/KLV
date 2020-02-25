@@ -1,7 +1,7 @@
 package demo.Service;
 
-import demo.Models.Bike;
-import demo.Repositories.BikeRepository;
+import demo.Model.Bike;
+import demo.Repository.BikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +9,6 @@ import java.util.List;
 
 @Service("BikeService")
 public class BikeServiceImpl implements BikeService {
-
-
     @Autowired
     BikeRepository bikeRepository;
 
@@ -26,8 +24,12 @@ public class BikeServiceImpl implements BikeService {
 
     @Override
     public void createBike(Bike bike){
-        ///*insert into Bike (id, name, model) values (bike.getId(), bike.getName(), bike.getModel(
-        bikeRepository.getOne(1l);
+        Bike newBike = new Bike();
+        newBike.setName(bike.getName());
+        newBike.setModel(bike.getModel());
+        newBike.setSerialNumber(bike.getSerialNumber());
+        newBike.setPurchasePrice(bike.getPurchasePrice());
+        bikeRepository.save(newBike);
     }
 
     @Override
@@ -40,13 +42,21 @@ public class BikeServiceImpl implements BikeService {
         bikeRepository.deleteById(id);
     }
  
-    public Bike updateBike(Bike bike) { // need to update name, model, ... of bike
+    public Bike updateBike(Bike bike) {
         Bike bikeUpdated = bikeRepository.getOne(bike.getId());
-        bikeUpdated.setName(bike.getName());
-        bikeUpdated.setModel(bike.getModel());
-        bikeUpdated.setEmail(bike.getEmail());
-        bikeUpdated.setContact(bike.isContact());
-        //
-        return bikeUpdated; // name, model ,... are updated
+        if (bike.getName() != null && bike.getName() != ""){
+            bikeUpdated.setName(bike.getName());
+        }
+        if (bike.getModel() != null && bike.getModel() != ""){
+            bikeUpdated.setModel(bike.getModel());
+        }
+        if (bike.getSerialNumber() != null && bike.getSerialNumber() != "") {
+            bikeUpdated.setSerialNumber(bike.getSerialNumber());
+        }
+        if (bike.getPurchasePrice() != null && bike.getPurchasePrice().toString() != "") {
+            bikeUpdated.setPurchasePrice(bike.getPurchasePrice());
+        }
+        bikeRepository.save(bikeUpdated);
+        return bikeUpdated;
     }
 }

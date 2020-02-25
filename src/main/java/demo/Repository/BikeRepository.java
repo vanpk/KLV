@@ -1,11 +1,9 @@
-package demo.Repositories;
+package demo.Repository;
 
-import demo.Models.Bike;
+import demo.Model.Bike;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BikeRepository extends JpaRepository<Bike, Long> {
-    // hibernate framewore
-
 }

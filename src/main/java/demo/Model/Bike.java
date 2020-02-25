@@ -1,15 +1,12 @@
-package demo.Models;
+package demo.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -17,18 +14,19 @@ public class Bike {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotNull
     private String name;
-    private String email;
-    private String phone;
+
     @NotNull
     private String model;
+
     private String serialNumber;
+
     private BigDecimal purchasePrice;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yy" )
-    private Date purchaseDate;
-    private boolean contact;
+    @OneToMany(mappedBy = "bike")
+    private List<Orders> orders;
 
     public Long getId() {
         return id;
@@ -44,22 +42,6 @@ public class Bike {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getModel() {
@@ -84,21 +66,5 @@ public class Bike {
 
     public void setPurchasePrice(BigDecimal purchasePrice) {
         this.purchasePrice = purchasePrice;
-    }
-
-    public Date getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    public boolean isContact() {
-        return contact;
-    }
-
-    public void setContact(boolean contact) {
-        this.contact = contact;
     }
 }
