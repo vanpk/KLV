@@ -16,7 +16,8 @@
 
 #push to branch: git push origin
 
-#to know more on GIT, refer to https://github.com/joshnh/Git-Commands or google more.
+#to know more on GIT, refer to :
+https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
 
 -----------------------------------
 2. To create a new branch, make some commits, and merge it back into master:
