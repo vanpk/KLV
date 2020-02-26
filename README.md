@@ -4,29 +4,24 @@
 
 #initialize git: git init
 
-#create branch: git checkout -b
+#change to branchName: git checkout <branchName>
+#create branch: git checkout -b <newbranchName> 
+  #or: git branch <newbranchName>
 
 #get source: git pull
 
 #to see status: git status
 
-#after changing file (add file): git add #or add all file: git add --all
+#after changing file (add file): git add 
+#or add all file: git add --all
 
-#commit file: git commit -m ""
+#commit file: git commit -m "<message>"
 
 #push to branch: git push origin
 
-#to know more on GIT, refer to :
+#merge <branchName> into branch master:
+git checkout master
+git merge <branchName>
+  
+#know more about GIT, refer to:
 https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
-
------------------------------------
-2. To create a new branch, make some commits, and merge it back into master:
-$ git checkout master
-$ git branch new-branch
-$ git checkout new-branch
-
-
-$ git add –A
-$ git commit –m "Some commit message"
-$ git checkout master
-$ git merge new-branch
