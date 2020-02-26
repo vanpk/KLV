@@ -1,6 +1,7 @@
 package demo.Service;
 
 import demo.Model.Bike;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +13,6 @@ public interface BikeService {
     Bike findBikeById(long id);
 
     void createBike(Bike bike);
-
-    Bike getBikeById(Long id);
 
     void removeBikeById(Long id);
 

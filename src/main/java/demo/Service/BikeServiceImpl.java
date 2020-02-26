@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("BikeService")
-public class BikeServiceImpl implements BikeService {
+public class BikeServiceImpl implements demo.Service.BikeService {
     @Autowired
     BikeRepository bikeRepository;
 
     @Override
     public List<Bike> findAll() {
-        return bikeRepository.findAll();
+        return bikeRepository.findAllBikes();
     }
 
     @Override
@@ -30,11 +30,6 @@ public class BikeServiceImpl implements BikeService {
         newBike.setSerialNumber(bike.getSerialNumber());
         newBike.setPurchasePrice(bike.getPurchasePrice());
         bikeRepository.save(newBike);
-    }
-
-    @Override
-    public Bike getBikeById (Long id){
-        return bikeRepository.getOne(id);
     }
 
     @Override
@@ -59,4 +54,5 @@ public class BikeServiceImpl implements BikeService {
         bikeRepository.save(bikeUpdated);
         return bikeUpdated;
     }
+
 }
