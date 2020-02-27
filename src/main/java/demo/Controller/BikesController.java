@@ -12,33 +12,31 @@ import java.util.List;
 @RequestMapping("/api/v1/bikes")
 public class BikesController {
     @Autowired
-    private BikeRepository bikeRepository;
-    @Autowired
     private BikeService bikeService;
-
+    // có 4 loại tuong tác với data chính: CRUD (Create, Retrieve (get), Update, Delete)
     @GetMapping
     public List<Bike> list() {
-        return bikeService.findAll();
+        return bikeService.findAll(); // Retrieve all (find all)
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Bike bike) { // Bike: kiểu object
         bikeService.createBike(bike);
-    }
+    } //Create
 
     @PostMapping("/update")
     public Bike update(@RequestBody Bike bike){
         return bikeService.updateBike(bike);
-    }
+    } // update
 
     @GetMapping("/{id}")
     public Bike get(@PathVariable("id") long id) { // id = 1000, 1, 2
         return bikeService.findBikeById(id);
-    }
+    } // Retrieve one (find by id)
 
     @GetMapping("/delete/{id}")
     public void deleteBikeById(@PathVariable("id") Long id){
          bikeService.removeBikeById(id);
-    }
+    } // Delete
 }

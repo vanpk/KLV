@@ -24,9 +24,8 @@ public class Bike {
     private String serialNumber;
 
     private BigDecimal purchasePrice;
-
-    @OneToMany(mappedBy = "bike")
-    private List<Orders> orders;
+    @OneToMany(mappedBy = "bike") // OneToMany: 1 - n: 1 bike có n orders
+    private List<Orders> orders; // do đó, trên bảng Bike này, field orders trả về nhiều orders (List<Orders>)
 
     public Long getId() {
         return id;
