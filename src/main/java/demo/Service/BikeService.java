@@ -1,7 +1,6 @@
 package demo.Service;
 
 import demo.Model.Bike;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

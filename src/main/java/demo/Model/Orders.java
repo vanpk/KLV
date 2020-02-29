@@ -1,6 +1,7 @@
 package demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,18 +21,11 @@ public class Orders {
     @NotNull
     private Long number; // số lượng sản phẩm trên 1 order
 
-    // quan hệ giữa các bảng:
-    // User - Orders:  vì 1 user có thể có n orders, trên 1 order chỉ lưu thông tin của 1 user => 1 - n
-    // Bike - Orders: vì 1 bike có thể nằm trên n Orders, trên 1 order chỉ lưu thông tin của 1 bike => 1 -n
-    // spring framework có thể tạo mới quan hệ này (thay cho việc tạo bằng câu sql trong database) như sau:
-
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne // ngược lại
-    @JoinColumn(name = "bike_id", nullable = false)
-    private Bike bike; // trên 1 order (1 dòng dự liệu (1 record) chỉ có thông tin về 1 bike) => trả về 1 Bike
+    @ManyToOne
+    private Bike bike;
 
     public Long getId() {
         return id;

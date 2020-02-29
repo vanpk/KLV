@@ -1,4 +1,4 @@
-package demo.Service;
+package demo.Service.ServiceImpl;
 
 import demo.Model.Bike;
 import demo.Repository.BikeRepository;
