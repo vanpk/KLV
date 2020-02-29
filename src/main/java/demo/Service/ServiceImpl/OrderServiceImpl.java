@@ -6,6 +6,7 @@ import demo.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -25,8 +26,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Set<Orders> searchOrders(Long number) {
-        Set<Orders> orders = orderRepository.searchOrders(number);
+    public Set<Orders> searchOrders(Long number, BigDecimal price, String bikeName) { // number = 1
+        Set<Orders> orders = orderRepository.searchOrders(number, price, bikeName);
         return orders;
     }
 

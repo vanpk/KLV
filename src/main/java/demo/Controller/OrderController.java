@@ -1,13 +1,12 @@
 package demo.Controller;
 
+import demo.Model.Bike;
 import demo.Model.Orders;
 import demo.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 // như vậy, app này từ giờ có thể quản lý được thông tin user, bike , và thong tin đặt hàng:
@@ -28,8 +27,10 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/search")
-    public Set<Orders> searchOrders(@RequestParam Long number) {
-        return orderService.searchOrders(number);
+    public Set<Orders> searchOrders(@RequestParam(required = false) Long number,
+                                    @RequestParam(required = false) BigDecimal price,
+                                    @RequestParam(required = false) String bikeName) {
+        return orderService.searchOrders(number, price, bikeName);
     }
 
     @GetMapping

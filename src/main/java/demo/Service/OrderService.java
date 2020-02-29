@@ -3,6 +3,7 @@ package demo.Service;
 import demo.Model.Orders;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -10,5 +11,5 @@ import java.util.Set;
 public interface OrderService {
     Set<Orders> findAll();
 
-    Set<Orders> searchOrders(Long number);
+    Set<Orders> searchOrders(Long number, BigDecimal price, String bikeName);
 }
